@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" type="image/webp" href="logo.webp">
+<meta property="og:title" content="Samuel Martin Jordan Programme">
+<meta property="og:description" content="A non-profit initiative working to expand access to quality education for underserved student communities in Iran.">
+<meta property="og:image" content="logo.webp">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Samuel Martin Jordan Programme</title>
+<meta name="description" content="The Samuel Martin Jordan Programme is a non-profit initiative working to expand access to quality education for underserved student communities in Iran.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,600;0,8..60,700;1,8..60,600&family=Noto+Nastaliq+Urdu:wght@500&family=Vazirmatn:wght@400;500;700;800&family=Figtree:wght@400;500;600&display=swap">
+<style>
+/* Layout: Eton-style. Fixed white rail (menu, crest, language, contact), vertical breadcrumb,
+   slate-navy hero with the crest's barry stripe on its edge. Mirrors fully for Persian (RTL). */
+:root{
+  --navy:#1f3b5a;
+  --navy-deep:#16304b;
+  --navy-line:#2d4a6a;
+  --paper:#ffffff;
+  --mist:#eef1f4;
+  --ink:#1b2735;
+  --muted:#5b6878;
+  --rule:#d8dde3;
+  --on-navy:#ffffff;
+  --on-navy-muted:#c3cfdc;
+  --gold:#ffe476;        /* from the crest */
+  --crest-blue:#165bc1;  /* from the crest */
+  --barry-v:linear-gradient(180deg,var(--gold) 0 16.67%,var(--crest-blue) 16.67% 33.33%,var(--gold) 33.33% 50%,var(--crest-blue) 50% 66.67%,var(--gold) 66.67% 83.33%,var(--crest-blue) 83.33% 100%);
+  --barry-h:linear-gradient(90deg,var(--gold) 0 16.67%,var(--crest-blue) 16.67% 33.33%,var(--gold) 33.33% 50%,var(--crest-blue) 50% 66.67%,var(--gold) 66.67% 83.33%,var(--crest-blue) 83.33% 100%);
+  --nastaliq:"Noto Nastaliq Urdu","Noto Naskh Arabic","Tahoma",serif;
+  --serif:"Source Serif 4","Georgia","Times New Roman",serif;
+  --sans:"Figtree","Helvetica Neue",Arial,sans-serif;
+  --rail:118px;
+  --crumb:175px;
+  --gr:max(16px,env(safe-area-inset-right,0px));
+  --gl:max(16px,env(safe-area-inset-left,0px));
+  color-scheme:light;
+}
+:root[lang="fa"]{--serif:"Vazirmatn","Tahoma",sans-serif;--sans:"Vazirmatn","Tahoma",sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.05;text-wrap:balance;margin:0;letter-spacing:-.01em}
+p{margin:0}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid var(--navy);outline-offset:3px}
+.on-navy a:focus-visible,.on-navy button:focus-visible{outline-color:#fff}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0}
+.icon{width:30px;height:30px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+[lang="fa"]{font-family:"Vazirmatn","Tahoma",sans-serif}
+.nq[lang="fa"]{font-family:var(--nastaliq)}
+[lang="en"]{font-family:var(--serif)}
+
+/* Persian typography: no letter-spacing (it breaks joined letters), no faux italics, taller lines */
+:root[lang="fa"] *{letter-spacing:0!important}
+:root[lang="fa"] em{font-style:normal}
+:root[lang="fa"] body{line-height:1.9}
+:root[lang="fa"] h1{line-height:1.3}
+:root[lang="fa"] h2,:root[lang="fa"] h3{line-height:1.45}
+:root[lang="fa"] .kicker{font-size:.9rem}
+
+/* Left rail */
+.rail{position:fixed;left:0;top:0;bottom:0;width:calc(var(--rail) + env(safe-area-inset-left,0px));padding-left:env(safe-area-inset-left,0px);
+  padding-block:calc(env(safe-area-inset-top,0px) + 74px) calc(env(safe-area-inset-bottom,0px) + 56px);background:var(--paper);z-index:40;
+  display:flex;flex-direction:column;align-items:center;justify-content:space-between;color:var(--navy)}
+.menu-btn{display:grid;justify-items:center;gap:6px;font-size:.98rem;font-weight:500}
+.burger{display:grid;gap:7px;width:40px}
+.burger span{height:2px;background:currentColor}
+.rail .logo{width:56px;height:auto}
+.rail-bottom{display:grid;gap:22px;justify-items:center}
+.rail-bottom a{display:block;line-height:0}
+.lang-btn{width:42px;height:42px;border:1.5px solid var(--navy);border-radius:50%;display:grid;place-items:center;font-weight:600;font-size:.95rem;line-height:1;transition:background .2s,color .2s}
+.lang-btn:hover{background:var(--navy);color:var(--paper)}
+
+/* Menu overlay */
+.overlay{position:fixed;inset:0;z-index:60;background:var(--navy);color:var(--on-navy);overflow:auto;
+  padding:calc(env(safe-area-inset-top,0px) + 56px) var(--gr) 48px calc(var(--rail) + var(--gl) + 40px);
+  transform:translateX(-100%);visibility:hidden;
+  transition:transform .55s cubic-bezier(.22,.8,.24,1),visibility 0s linear .55s}
+.overlay.open{transform:none;visibility:visible;transition:transform .55s cubic-bezier(.22,.8,.24,1),visibility 0s}
+:root[dir="rtl"] .overlay{transform:translateX(100%)}
+:root[dir="rtl"] .overlay.open{transform:none}
+.overlay nav a,.overlay .langs,.overlay .fa,.overlay .small{opacity:0;transform:translateX(-28px);transition:opacity .4s ease,transform .5s cubic-bezier(.22,.8,.24,1)}
+:root[dir="rtl"] .overlay nav a,:root[dir="rtl"] .overlay .langs,:root[dir="rtl"] .overlay .fa,:root[dir="rtl"] .overlay .small{transform:translateX(28px)}
+.overlay.open nav a,.overlay.open .langs,.overlay.open .fa,.overlay.open .small{opacity:1;transform:none}
+.overlay.open nav a:nth-child(1){transition-delay:.18s}
+.overlay.open nav a:nth-child(2){transition-delay:.23s}
+.overlay.open nav a:nth-child(3){transition-delay:.28s}
+.overlay.open nav a:nth-child(4){transition-delay:.33s}
+.overlay.open nav a:nth-child(5){transition-delay:.38s}
+.overlay.open nav a:nth-child(6){transition-delay:.43s}
+.overlay.open .langs,.overlay.open .fa,.overlay.open .small{transition-delay:.48s}
+.overlay .close{position:fixed;top:calc(env(safe-area-inset-top,0px) + 74px);left:calc(env(safe-area-inset-left,0px) + 30px);display:grid;justify-items:center;gap:6px;font-weight:500}
+.overlay nav{display:grid;gap:6px;max-width:900px}
+.overlay nav a{font-family:var(--serif);font-weight:700;font-size:clamp(2rem,5vw,3.6rem);font-variation-settings:"opsz" 8;letter-spacing:.025em;text-decoration:none;padding-block:6px;border-bottom:1px solid var(--navy-line)}
+:root[lang="fa"] .overlay nav a{font-weight:800;font-size:clamp(2rem,4.6vw,3.3rem)}
+.overlay nav a:hover{color:var(--on-navy-muted)}
+.langs{display:flex;gap:10px;margin-top:32px}
+.langs button{padding:10px 18px;border:1px solid var(--navy-line);font-weight:600}
+.langs button[aria-pressed="true"]{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+.overlay .fa{font-family:var(--nastaliq);font-size:1.6rem;line-height:2.2;color:var(--gold);margin-top:24px;max-width:900px}
+.overlay .small{margin-top:16px;color:var(--on-navy-muted)}
+
+/* Main column */
+main,footer{margin-left:calc(var(--rail) + env(safe-area-inset-left,0px))}
+
+/* Hero */
+.hero{position:relative;padding-left:var(--crumb);padding-bottom:64px}
+.hero::before{content:"";position:absolute;left:110px;right:0;top:0;bottom:0;background:var(--navy)}
+.hero::after{content:"";position:absolute;left:110px;top:0;bottom:0;width:10px;background:var(--barry-v);z-index:1}
+.crumbs{position:absolute;left:0;top:0;width:110px;height:100%;background:var(--paper);display:flex;justify-content:center;padding-top:44px;z-index:1}
+.crumbs ol{writing-mode:vertical-rl;list-style:none;margin:0;padding:0;display:flex;gap:10px;align-items:center;font-size:.92rem;color:var(--muted)}
+.crumbs li{display:flex;gap:10px;align-items:center}
+.crumbs li + li::before{content:"›";font-size:1rem}
+.crumbs a{text-decoration:none}
+.crumbs [aria-current]{color:var(--ink);font-weight:600}
+.crumbs .home{width:18px;height:18px;stroke-width:1.6}
+.hero-text{position:relative;z-index:2;padding:clamp(96px,12vw,180px) var(--gr) clamp(16px,3vw,40px) clamp(24px,8.5vw,142px);color:var(--on-navy)}
+.hero h1{font-size:clamp(3rem,8.4vw,7.2rem);max-width:12ch;line-height:.98}
+.hero h1 em{font-style:italic;font-weight:600;color:var(--gold)}
+:root[lang="fa"] .hero h1{font-size:clamp(2.6rem,6.6vw,5.6rem);font-weight:800;max-width:14ch}
+:root[lang="fa"] .hero h1 em{font-weight:800}
+.hero .lede{margin-top:clamp(24px,3vw,40px);max-width:64ch;font-size:clamp(1.05rem,1.5vw,1.32rem);font-weight:500;line-height:1.5}
+:root[lang="fa"] .hero .lede{line-height:1.9}
+
+/* Sections */
+.sec{padding:clamp(64px,9vw,120px) var(--gr) clamp(64px,9vw,120px) clamp(24px,8vw,140px)}
+.kicker{display:flex;align-items:center;gap:12px;font-size:.8rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.kicker::before{content:"";width:12px;height:14px;flex:none;background:var(--barry-v);clip-path:polygon(0 0,100% 0,100% 45%,50% 100%,0 45%)}
+.sec h2{font-size:clamp(2.2rem,4.4vw,3.6rem);margin-top:14px;max-width:18ch}
+.prose{display:grid;gap:18px;margin-top:28px;max-width:66ch;color:var(--muted);font-size:1.08rem}
+
+.intro{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(32px,6vw,96px);align-items:start}
+.intro .lead{font-family:var(--serif);font-weight:600;font-size:clamp(1.5rem,2.5vw,2.1rem);line-height:1.3;color:var(--ink)}
+:root[lang="fa"] .intro .lead{font-weight:500;line-height:1.7}
+@media (max-width:900px){.intro{grid-template-columns:minmax(0,1fr)}}
+
+/* Figures on navy */
+.figures{background:var(--navy);color:var(--on-navy)}
+.figures .kicker{color:var(--on-navy-muted)}
+.figs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:48px;border-top:1px solid var(--navy-line)}
+.fig{padding:28px 24px 0 0}
+.fig + .fig{padding-left:24px;border-left:1px solid var(--navy-line)}
+.fig .n{font-family:var(--serif);font-weight:700;font-size:clamp(3rem,5.4vw,4.6rem);line-height:1;font-variant-numeric:lining-nums tabular-nums}
+:root[lang="fa"] .fig .n{line-height:1.25}
+.fig .n::after{content:"";display:block;width:32px;height:3px;margin-top:18px;background:var(--gold)}
+.fig .l{margin-top:14px;color:var(--on-navy-muted);max-width:22ch}
+.figures .note{margin-top:40px;font-size:.88rem;color:var(--on-navy-muted)}
+@media (max-width:900px){.figs{grid-template-columns:repeat(2,minmax(0,1fr))}.fig:nth-child(3){padding-left:0;border-left:0}.fig:nth-child(n+3){margin-top:28px;border-top:1px solid var(--navy-line)}}
+
+/* Persian motto */
+.motto{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,80px);align-items:center;border-bottom:1px solid var(--rule)}
+.motto .fa{font-family:var(--nastaliq);font-weight:500;font-size:clamp(2.2rem,4.6vw,3.8rem);line-height:2.1;color:var(--navy);text-align:right}
+.motto .en{font-family:var(--serif);font-style:italic;font-weight:600;font-size:clamp(1.6rem,2.6vw,2.2rem);line-height:1.25;margin-top:14px;max-width:20ch}
+:root[dir="rtl"] .motto .en{font-family:"Source Serif 4",Georgia,serif;margin-left:auto;text-align:left}
+.motto .src{margin-top:14px;color:var(--muted);font-size:.92rem;max-width:44ch}
+@media (max-width:900px){.motto{grid-template-columns:minmax(0,1fr)}}
+
+/* Two text columns */
+.pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(32px,6vw,96px)}
+.pair .col{border-top:3px solid var(--navy);padding-top:28px}
+.pair h2{font-size:clamp(1.9rem,3.2vw,2.8rem);margin-top:12px}
+.pair p{margin-top:18px;color:var(--muted);max-width:56ch}
+.pair ul{margin:20px 0 0;padding:0 0 0 1.1em;display:grid;gap:10px;max-width:56ch}
+:root[dir="rtl"] .pair ul{padding:0 1.1em 0 0}
+.pair li::marker{color:var(--navy)}
+.textlink{display:inline-flex;gap:10px;align-items:center;margin-top:26px;font-weight:600;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:3px;color:var(--navy)}
+@media (max-width:900px){.pair{grid-template-columns:minmax(0,1fr)}}
+
+/* Timeline */
+.story{background:var(--mist)}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:48px;border-top:3px solid var(--navy)}
+.step{padding:28px 28px 0 0}
+.step + .step{padding-left:28px;border-left:1px solid var(--rule)}
+.step .when{font-family:var(--serif);font-weight:700;font-size:1.6rem;color:var(--navy)}
+.step h3{font-family:var(--sans);font-size:.82rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-top:10px}
+:root[lang="fa"] .step h3{font-size:1rem}
+.step p{margin-top:12px;color:var(--muted)}
+@media (max-width:800px){.steps{grid-template-columns:minmax(0,1fr)}.step,.step + .step{padding:24px 0;border-left:0;border-bottom:1px solid var(--rule)}}
+
+/* People */
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;margin-top:48px}
+.card-p{border-top:3px solid var(--navy);padding-top:22px}
+.card-p.empty{border-top-color:var(--rule)}
+.card-p h3{font-size:1.7rem}
+.card-p .role{margin-top:6px;font-size:.8rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--navy)}
+:root[lang="fa"] .card-p .role{font-size:.95rem}
+.card-p p.bio{margin-top:10px;color:var(--muted)}
+@media (max-width:900px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.cards{grid-template-columns:minmax(0,1fr)}}
+
+/* Support */
+.support{background:var(--navy);color:var(--on-navy)}
+.support .kicker{color:var(--on-navy-muted)}
+.support .prose{color:var(--on-navy-muted)}
+.ways{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:48px;border-top:1px solid var(--navy-line)}
+.way{padding:26px 24px 0 0}
+.way + .way{padding-left:24px;border-left:1px solid var(--navy-line)}
+.way h3{font-size:1.6rem}
+.way p{margin-top:8px;color:var(--on-navy-muted)}
+@media (max-width:800px){.ways{grid-template-columns:minmax(0,1fr)}.way,.way + .way{padding:22px 0;border-left:0;border-bottom:1px solid var(--navy-line)}}
+
+/* Footer */
+footer{background:var(--navy-deep);color:var(--on-navy-muted);font-size:.92rem}
+.foot{display:grid;grid-template-columns:minmax(0,1.5fr) repeat(3,minmax(0,1fr));gap:36px;padding:56px var(--gr) 40px clamp(24px,8vw,140px)}
+.foot h4{margin:0 0 14px;font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--on-navy)}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.foot a{text-decoration:none}
+.foot a:hover{color:var(--on-navy)}
+.foot-brand{display:flex;gap:16px;align-items:flex-start}
+.foot-brand .logo{width:52px;height:auto;flex:none}
+.foot-brand strong{display:block;font-family:var(--serif);font-size:1.3rem;color:var(--on-navy);line-height:1.3}
+.foot-brand p{margin-top:8px;max-width:34ch}
+.foot-brand .blazon{font-family:var(--serif);font-style:italic;color:var(--on-navy);margin-top:12px}
+:root[lang="fa"] .foot-brand .blazon{font-style:normal}
+.legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding:18px var(--gr) 22px clamp(24px,8vw,140px);border-top:1px solid var(--navy-line);font-size:.8rem}
+@media (max-width:900px){.foot{grid-template-columns:repeat(2,minmax(0,1fr))}.foot-col-brand{grid-column:1/-1}}
+
+/* RTL mirror (Persian) */
+:root[dir="rtl"] .rail{left:auto;right:0;padding-left:0;padding-right:env(safe-area-inset-right,0px);width:calc(var(--rail) + env(safe-area-inset-right,0px))}
+:root[dir="rtl"] main,:root[dir="rtl"] footer{margin-left:0;margin-right:calc(var(--rail) + env(safe-area-inset-right,0px))}
+:root[dir="rtl"] .hero{padding-left:0;padding-right:var(--crumb)}
+:root[dir="rtl"] .hero::before{left:0;right:110px}
+:root[dir="rtl"] .hero::after{left:auto;right:110px}
+:root[dir="rtl"] .crumbs{left:auto;right:0}
+:root[dir="rtl"] .crumbs ol{direction:ltr}
+:root[lang="fa"] .fig .n{font-variant-numeric:normal}
+:root[dir="rtl"] .hero-text{padding-left:var(--gl);padding-right:clamp(24px,8.5vw,142px)}
+:root[dir="rtl"] .sec{padding-left:var(--gl);padding-right:clamp(24px,8vw,140px)}
+:root[dir="rtl"] .foot,:root[dir="rtl"] .legal{padding-left:var(--gl);padding-right:clamp(24px,8vw,140px)}
+:root[dir="rtl"] .overlay{padding-left:var(--gl);padding-right:calc(var(--rail) + var(--gr) + 40px)}
+:root[dir="rtl"] .overlay .close{left:auto;right:calc(env(safe-area-inset-right,0px) + 30px)}
+:root[dir="rtl"] .fig{padding:28px 0 0 24px}
+:root[dir="rtl"] .fig + .fig{padding-right:24px;border-left:0;border-right:1px solid var(--navy-line)}
+:root[dir="rtl"] .step{padding:28px 0 0 28px}
+:root[dir="rtl"] .step + .step{padding-right:28px;border-left:0;border-right:1px solid var(--rule)}
+:root[dir="rtl"] .way{padding:26px 0 0 24px}
+:root[dir="rtl"] .way + .way{padding-right:24px;border-left:0;border-right:1px solid var(--navy-line)}
+@media (max-width:900px){:root[dir="rtl"] .fig:nth-child(3){padding-right:0;border-right:0}}
+@media (max-width:800px){
+  :root[dir="rtl"] .step,:root[dir="rtl"] .step + .step{padding:24px 0;border-right:0}
+  :root[dir="rtl"] .way,:root[dir="rtl"] .way + .way{padding:22px 0;border-right:0}
+}
+
+/* Phone: rail becomes a top bar */
+@media (max-width:760px){
+  :root{--rail:0px;--crumb:0px}
+  .rail,:root[dir="rtl"] .rail{left:0;right:0;bottom:auto;width:auto;height:calc(64px + env(safe-area-inset-top,0px));flex-direction:row;padding:env(safe-area-inset-top,0px) var(--gr) 0 var(--gl);border-bottom:1px solid var(--rule)}
+  .menu-btn{grid-auto-flow:column;align-items:center;gap:10px}
+  .burger{width:28px;gap:6px}
+  .rail .logo{width:38px}
+  .rail-bottom{grid-auto-flow:column;align-items:center;gap:18px}
+  .rail-bottom .icon{width:26px;height:26px}
+  .lang-btn{width:36px;height:36px;font-size:.85rem}
+  main{padding-top:calc(64px + env(safe-area-inset-top,0px))}
+  :root[dir="rtl"] main,:root[dir="rtl"] footer{margin-right:0}
+  .crumbs{display:none}
+  .hero::before,:root[dir="rtl"] .hero::before{left:0;right:0}
+  .hero::after,:root[dir="rtl"] .hero::after{left:0;right:0;top:auto;bottom:0;width:auto;height:8px;background:var(--barry-h)}
+  .hero-text,:root[dir="rtl"] .hero-text{padding:64px var(--gr) 8px var(--gl)}
+  .overlay,:root[dir="rtl"] .overlay{padding:calc(env(safe-area-inset-top,0px) + 96px) var(--gr) 48px var(--gl)}
+  .overlay .close{top:calc(env(safe-area-inset-top,0px) + 18px);left:var(--gl);grid-auto-flow:column;align-items:center;gap:10px}
+  :root[dir="rtl"] .overlay .close{left:auto;right:var(--gr)}
+  .sec,:root[dir="rtl"] .sec{padding-left:var(--gl);padding-right:var(--gr)}
+  .foot,.legal,:root[dir="rtl"] .foot,:root[dir="rtl"] .legal{padding-left:var(--gl);padding-right:var(--gr)}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-search" viewBox="0 0 32 32"><circle cx="18" cy="13" r="9"/><path d="M11.5 19.5 3 28"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 32 32"><path d="M9 3c-3 1-5 3-5 6 0 9 10 20 19 20 3 0 5-2 6-5l-5-4-3 3c-4-2-7-5-9-9l3-3z"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11 12 4l9 7v9H3z"/><path d="M9 20v-6h6v6"/></symbol>
+  </defs>
+</svg>
+
+<aside class="rail" aria-label="Site" data-i18n-aria="aSite">
+  <button class="menu-btn" id="menu-open" aria-expanded="false" aria-controls="menu">
+    <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+    <span data-i18n="menu">Menu</span>
+  </button>
+  <a href="#top" aria-label="Samuel Martin Jordan Programme, home" data-i18n-aria="aHome"><img class="logo" src="logo.webp" alt="Samuel Martin Jordan Programme crest" data-i18n-alt="aCrest" width="56" height="67"></a>
+  <div class="rail-bottom">
+    <button class="lang-btn" id="lang-toggle" lang="fa" aria-label="نمایش به فارسی (View in Persian)">فا</button>
+    <button id="search-open" aria-label="Open menu to find a page" data-i18n-aria="aSearch"><svg class="icon"><use href="#i-search"/></svg></button>
+    <a href="#contact" aria-label="Contact" data-i18n-aria="aContact"><svg class="icon"><use href="#i-phone"/></svg></a>
+  </div>
+</aside>
+
+<div class="overlay on-navy" id="menu" inert>
+  <button class="close" id="menu-close"><svg class="icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M7 7l18 18M25 7 7 25"/></svg><span data-i18n="close">Close</span></button>
+  <nav aria-label="Main" data-i18n-aria="aMain">
+    <a href="#about" data-i18n="nAbout">About the Programme</a>
+    <a href="#figures" data-i18n="nFigures">The Programme in figures</a>
+    <a href="#programme" data-i18n="nHow">How it works</a>
+    <a href="#story" data-i18n="nStory">Our story</a>
+    <a href="#people" data-i18n="nPeople">People</a>
+    <a href="#support" data-i18n="nSupport">Support us</a>
+  </nav>
+  <div class="langs" role="group" aria-label="Language">
+    <button data-set-lang="en" aria-pressed="true" lang="en">English</button>
+    <button data-set-lang="fa" aria-pressed="false" lang="fa">فارسی</button>
+  </div>
+  <p class="fa" lang="fa" dir="rtl">ز گهواره تا گور دانش بجوی</p>
+  <p class="small" data-i18n="ovSmall">Samuel Martin Jordan Programme · Tehran, Iran</p>
+</div>
+
+<main id="top">
+  <section class="hero" aria-labelledby="hero-title">
+    <nav class="crumbs" aria-label="Breadcrumb" data-i18n-aria="aCrumb">
+      <ol>
+        <li><a href="#top" aria-label="Home" data-i18n-aria="crHome"><svg class="icon home" style="transform:rotate(90deg)"><use href="#i-home"/></svg></a></li>
+        <li><a href="#top" data-i18n="crHome">Home</a></li>
+        <li><span aria-current="page" data-i18n="crProg">The Programme</span></li>
+      </ol>
+    </nav>
+    <div class="hero-text">
+      <h1 id="hero-title" data-i18n="h1">Samuel Martin Jordan <em>Programme</em></h1>
+      <p class="lede" data-i18n="lede">A non-profit initiative working to expand access to quality education for underserved student communities in Iran.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="about" aria-labelledby="about-title">
+    <div class="intro">
+      <div>
+        <p class="kicker" data-i18n="kAbout">About the Programme</p>
+        <h2 id="about-title" data-i18n="hAbout">Talent is everywhere. Opportunity is not.</h2>
+      </div>
+      <div>
+        <p class="lead" data-i18n="lead">Since January 2024 the Programme has given 60 underserved students in Iran access to education, and two cohorts have graduated.</p>
+        <div class="prose">
+          <p data-i18n="p1">The Programme was co-founded in Tehran by a small group of students who wanted others to have the same chance at a good education that they had.</p>
+          <p data-i18n="p2">We work with students whose circumstances would otherwise put that education out of reach. Every pound we receive is budgeted, tracked and reported back to the donors who gave it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec figures on-navy" id="figures" aria-labelledby="fig-title">
+    <p class="kicker" data-i18n="kFig">The Programme in figures</p>
+    <h2 id="fig-title" data-i18n="hFig">January 2024 to August 2025</h2>
+    <div class="figs">
+      <div class="fig"><div class="n" data-i18n="n1">60</div><p class="l" data-i18n="l1">underserved students given access to education</p></div>
+      <div class="fig"><div class="n" data-i18n="n2">2</div><p class="l" data-i18n="l2">cohorts graduated from the Programme</p></div>
+      <div class="fig"><div class="n" data-i18n="n3">£28k</div><p class="l" data-i18n="l3">budget managed over 20 months, with no overspend</p></div>
+      <div class="fig"><div class="n" data-i18n="n4">11</div><p class="l" data-i18n="l4">financial reports prepared for our donors</p></div>
+    </div>
+    <p class="note" data-i18n="note">Sterling figures are approximate equivalents of funds raised and spent in Iranian rials.</p>
+  </section>
+
+  <section class="sec motto" aria-labelledby="motto-title">
+    <p class="fa" lang="fa" dir="rtl">ز گهواره تا گور دانش بجوی</p>
+    <div>
+      <p class="kicker" data-i18n="kMotto">What we believe</p>
+      <p class="en" id="motto-title" lang="en" dir="ltr">Seek knowledge from the cradle to the grave.</p>
+      <p class="src" data-i18n="src">A Persian saying every Iranian child knows. We believe everyone should get the chance to live by it, whatever their circumstances.</p>
+    </div>
+  </section>
+
+  <section class="sec pair" id="programme" aria-label="How the Programme works" data-i18n-aria="aPair">
+    <div class="col">
+      <p class="kicker" data-i18n="kHow">How it works</p>
+      <h2 data-i18n="hHow">Learning together, from first term to graduation</h2>
+      <p data-i18n="pHow">Students join the Programme in cohorts and stay with it through to graduation, so no student goes through it alone.</p>
+      <ul>
+        <li data-i18n="li1">Open to students in Iran whose circumstances limit their access to education</li>
+        <li data-i18n="li2">Taught and supported in cohorts</li>
+        <li data-i18n="li3">Free to every student we accept</li>
+      </ul>
+      <a class="textlink" href="#support" data-i18n="fund">Help fund a place →</a>
+    </div>
+    <div class="col">
+      <p class="kicker" data-i18n="kStew">Stewardship</p>
+      <h2 data-i18n="hStew">Every rial accounted for</h2>
+      <p data-i18n="pStew">Donors trust us with their money, so we treat each budget line as a promise. We estimate what the Programme will need, set spending priorities in advance, and report back on exactly where the money went.</p>
+      <ul>
+        <li data-i18n="li4">A budget equivalent to about £28,000 managed over 20 months with no overspend</li>
+        <li data-i18n="li5">11 financial reports shared with donors</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec story" id="story" aria-labelledby="story-title">
+    <p class="kicker" data-i18n="kStory">Our story</p>
+    <h2 id="story-title" data-i18n="hStory">From an idea to two graduating cohorts</h2>
+    <div class="steps">
+      <div class="step">
+        <p class="when" data-i18n="w1">January 2024</p>
+        <h3 data-i18n="t1">Founded in Tehran</h3>
+        <p data-i18n="s1">The co-founders set up the Programme as a non-profit to widen access to education for underserved students.</p>
+      </div>
+      <div class="step">
+        <p class="when" data-i18n="w2">2024 – 2025</p>
+        <h3 data-i18n="t2">Sixty students</h3>
+        <p data-i18n="s2">Places grew to 60 students, funded by donors and supported through careful budgeting and regular reporting.</p>
+      </div>
+      <div class="step">
+        <p class="when" data-i18n="w3">By August 2025</p>
+        <h3 data-i18n="t3">Two cohorts graduate</h3>
+        <p data-i18n="s3">Two cohorts of students completed the Programme and graduated.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="people" aria-labelledby="people-title">
+    <p class="kicker" data-i18n="kPeople">People</p>
+    <h2 id="people-title" data-i18n="hPeople">The founders</h2>
+    <div class="cards">
+      <article class="card-p">
+        <h3 data-i18n="name1">Mohammadamin Zare</h3>
+        <p class="role" data-i18n="role1">Co-Founder &amp; Treasurer</p>
+        <p class="bio" data-i18n="bio1">Managed the Programme's budget, estimated its funding needs and prepared its donor reports. Now reading Anthropology at University College London.</p>
+      </article>
+      <article class="card-p empty">
+        <h3 data-i18n="cof">Co-Founder</h3>
+        <p class="role" data-i18n="tba">Name and role to be added</p>
+        <p class="bio" data-i18n="bioTba">A short biography will appear here.</p>
+      </article>
+      <article class="card-p empty">
+        <h3 data-i18n="cof">Co-Founder</h3>
+        <p class="role" data-i18n="tba">Name and role to be added</p>
+        <p class="bio" data-i18n="bioTba">A short biography will appear here.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="sec support on-navy" id="support" aria-labelledby="support-title">
+    <p class="kicker" data-i18n="kSup">Support the Programme</p>
+    <h2 id="support-title" data-i18n="hSup">Open a door for the next cohort</h2>
+    <div class="prose"><p data-i18n="pSup">Every place on the Programme is funded by people who believe that ability, not circumstance, should decide a student's future. Your gift is budgeted with care and reported back to you.</p></div>
+    <div class="ways" id="contact">
+      <div class="way"><h3 data-i18n="wy1">Make a gift</h3><p data-i18n="wy1p">Donation details coming soon.</p></div>
+      <div class="way"><h3 data-i18n="wy2">Partner with us</h3><p data-i18n="wy2p">For schools, teachers and organisations. Details coming soon.</p></div>
+      <div class="way"><h3 data-i18n="wy3">Get in touch</h3><p data-i18n="wy3p">Contact details coming soon.</p></div>
+    </div>
+  </section>
+</main>
+
+<footer class="on-navy">
+  <div class="foot">
+    <div class="foot-col-brand">
+      <div class="foot-brand">
+        <img class="logo" src="logo.webp" alt="" width="52" height="62">
+        <div>
+          <strong data-i18n="fName">Samuel Martin Jordan Programme</strong>
+          <p data-i18n="lede">A non-profit initiative working to expand access to quality education for underserved student communities in Iran.</p>
+          <p class="blazon" data-i18n="blazon">Arms: Barry of six Or and azure.</p>
+        </div>
+      </div>
+    </div>
+    <div><h4 data-i18n="fProg">Programme</h4><ul><li><a href="#about" data-i18n="fAbout">About</a></li><li><a href="#programme" data-i18n="nHow">How it works</a></li><li><a href="#story" data-i18n="nStory">Our story</a></li></ul></div>
+    <div><h4 data-i18n="fCom">Community</h4><ul><li><a href="#people" data-i18n="nPeople">People</a></li><li><a href="#support" data-i18n="nSupport">Support us</a></li></ul></div>
+    <div><h4 data-i18n="fCon">Contact</h4><ul><li data-i18n="fCity">Tehran, Iran</li><li data-i18n="fSoon">Details coming soon</li></ul></div>
+  </div>
+  <div class="legal"><span data-i18n="copy">© 2026 Samuel Martin Jordan Programme</span><span data-i18n="np">Non-profit · Tehran, Iran</span></div>
+</footer>
+
+<script>
+(function(){
+  var FA={
+    title:"برنامهٔ ساموئل مارتین جردن",
+    menu:"منو",close:"بستن",
+    aSite:"پیمایش سایت",aHome:"صفحهٔ اصلی برنامهٔ ساموئل مارتین جردن",aCrest:"نشان برنامهٔ ساموئل مارتین جردن",
+    aSearch:"جست‌وجو در صفحه‌ها",aContact:"تماس با ما",aMain:"منوی اصلی",aCrumb:"مسیر صفحه",aPair:"شیوهٔ کار برنامه",
+    nAbout:"دربارهٔ برنامه",nFigures:"برنامه در یک نگاه",nHow:"شیوهٔ کار",nStory:"داستان ما",nPeople:"بنیان‌گذاران",nSupport:"حمایت از ما",
+    ovSmall:"برنامهٔ ساموئل مارتین جردن · تهران",
+    crHome:"خانه",crProg:"برنامه",
+    h1:"<em>برنامهٔ</em> ساموئل مارتین جردن",
+    lede:"طرحی غیرانتفاعی برای گسترش دسترسی دانش‌آموزان کم‌برخوردار ایران به آموزش باکیفیت.",
+    kAbout:"دربارهٔ برنامه",
+    hAbout:"استعداد همه‌جا هست، اما فرصت نه.",
+    lead:"از ژانویهٔ ۲۰۲۴ تاکنون، ۶۰ دانش‌آموز کم‌برخوردار در ایران از طریق این برنامه به آموزش دسترسی پیدا کرده‌اند و دو ورودی آن فارغ‌التحصیل شده‌اند.",
+    p1:"این برنامه را جمعی از دانش‌آموزان در تهران بنیان گذاشتند؛ کسانی که خود از آموزش خوب بهره‌مند بودند و می‌خواستند دیگران هم از همین فرصت برخوردار شوند.",
+    p2:"ما با دانش‌آموزانی کار می‌کنیم که شرایط زندگی‌شان اجازهٔ دسترسی به چنین آموزشی را به آن‌ها نمی‌داد. تک‌تک کمک‌هایی که دریافت می‌کنیم بودجه‌بندی و پیگیری می‌شود و گزارش آن به اهداکنندگان ارائه می‌شود.",
+    kFig:"برنامه در یک نگاه",hFig:"ژانویهٔ ۲۰۲۴ تا اوت ۲۰۲۵",
+    n1:"۶۰",l1:"دانش‌آموز کم‌برخوردار که به آموزش دسترسی یافتند",
+    n2:"۲",l2:"ورودی که دوره را به پایان رساندند و فارغ‌التحصیل شدند",
+    n3:"۲۸ هزار",l3:"پوند بودجه طی ۲۰ ماه، بی‌آنکه هزینه‌ها از بودجه فراتر برود",
+    n4:"۱۱",l4:"گزارش مالی که برای اهداکنندگان تهیه شد",
+    note:"مبالغ پوندی، معادل تقریبی وجوهی است که به ریال تأمین و هزینه شده است.",
+    kMotto:"باور ما",
+    src:"سخنی آشنا برای هر ایرانی. ما باور داریم هر کسی، در هر شرایطی، باید فرصت دانش‌اندوزی داشته باشد.",
+    kHow:"شیوهٔ کار",hHow:"یادگیری در کنار هم، از نخستین روز تا فارغ‌التحصیلی",
+    pHow:"دانش‌آموزان در قالب ورودی‌های گروهی وارد برنامه می‌شوند و تا پایان دوره همراه آن می‌مانند؛ به این ترتیب هیچ دانش‌آموزی این مسیر را به‌تنهایی طی نمی‌کند.",
+    li1:"ویژهٔ دانش‌آموزانی در ایران که شرایط زندگی‌شان دسترسی آن‌ها به آموزش را محدود کرده است",
+    li2:"آموزش و همراهی دانش‌آموزان در قالب ورودی‌های گروهی",
+    li3:"رایگان برای همهٔ دانش‌آموزان پذیرفته‌شده",
+    fund:"هزینهٔ تحصیل یک دانش‌آموز را تأمین کنید ←",
+    kStew:"شفافیت مالی",hStew:"حساب تک‌تک ریال‌ها روشن است",
+    pStew:"اهداکنندگان با اعتماد، کمک‌هایشان را به ما می‌سپارند؛ از همین رو هر ردیف بودجه را تعهدی در برابر آن‌ها می‌دانیم. نیازهای مالی برنامه را از پیش برآورد می‌کنیم، اولویت‌های هزینه را مشخص می‌کنیم و دقیقاً گزارش می‌دهیم که هر مبلغ صرف چه کاری شده است.",
+    li4:"مدیریت بودجه‌ای معادل حدود ۲۸٬۰۰۰ پوند طی ۲۰ ماه، بی‌آنکه هزینه‌ها از بودجه فراتر برود",
+    li5:"تهیهٔ ۱۱ گزارش مالی برای اهداکنندگان",
+    kStory:"داستان ما",hStory:"از یک ایده تا فارغ‌التحصیلی دو ورودی",
+    w1:"ژانویهٔ ۲۰۲۴",t1:"آغاز به کار در تهران",s1:"بنیان‌گذاران، این برنامه را به‌عنوان طرحی غیرانتفاعی برای گسترش دسترسی دانش‌آموزان کم‌برخوردار به آموزش راه‌اندازی کردند.",
+    w2:"۲۰۲۴ تا ۲۰۲۵",t2:"۶۰ دانش‌آموز",s2:"با حمایت اهداکنندگان و به پشتوانهٔ بودجه‌بندی دقیق و گزارش‌دهی منظم، شمار دانش‌آموزان برنامه به ۶۰ نفر رسید.",
+    w3:"تا اوت ۲۰۲۵",t3:"فارغ‌التحصیلی دو ورودی",s3:"دو ورودی از دانش‌آموزان، دورهٔ برنامه را به پایان رساندند و فارغ‌التحصیل شدند.",
+    kPeople:"اعضا",hPeople:"بنیان‌گذاران",
+    name1:"محمدامین زارع",role1:"هم‌بنیان‌گذار و خزانه‌دار",
+    bio1:"مسئول مدیریت بودجهٔ برنامه، برآورد نیازهای مالی و تهیهٔ گزارش‌های مالی برای اهداکنندگان. او اکنون در رشتهٔ انسان‌شناسی در یونیورسیتی کالج لندن (UCL) تحصیل می‌کند.",
+    cof:"هم‌بنیان‌گذار",tba:"نام و سمت به‌زودی اضافه می‌شود",bioTba:"معرفی کوتاه به‌زودی در اینجا قرار می‌گیرد.",
+    kSup:"حمایت از برنامه",hSup:"دری به روی ورودی بعدی بگشایید",
+    pSup:"هزینهٔ تحصیل هر دانش‌آموز در این برنامه را کسانی تأمین می‌کنند که باور دارند آیندهٔ یک دانش‌آموز را باید توانایی او رقم بزند، نه شرایط زندگی‌اش. کمک شما با دقت بودجه‌بندی می‌شود و گزارش آن به دستتان می‌رسد.",
+    wy1:"کمک مالی",wy1p:"راه‌های پرداخت کمک به‌زودی اعلام می‌شود.",
+    wy2:"همکاری با ما",wy2p:"ویژهٔ مدارس، معلمان و سازمان‌ها. جزئیات به‌زودی اعلام می‌شود.",
+    wy3:"تماس با ما",wy3p:"اطلاعات تماس به‌زودی اعلام می‌شود.",
+    fName:"برنامهٔ ساموئل مارتین جردن",blazon:"نشان: سپری با شش نوار افقی زرد و آبی",
+    fProg:"برنامه",fAbout:"دربارهٔ ما",fCom:"مشارکت",fCon:"تماس",fCity:"تهران، ایران",fSoon:"به‌زودی",
+    copy:"© ۲۰۲۶ برنامهٔ ساموئل مارتین جردن",np:"غیرانتفاعی · تهران، ایران"
+  };
+  var root=document.documentElement, EN={title:document.title}, current='en';
+  function each(sel,fn){Array.prototype.forEach.call(document.querySelectorAll(sel),fn);}
+  // Remember the English text from the page itself
+  each('[data-i18n]',function(el){if(!('en' in el.dataset))el.dataset.en=el.innerHTML;});
+  each('[data-i18n-aria]',function(el){el.dataset.enAria=el.getAttribute('aria-label')||'';});
+  each('[data-i18n-alt]',function(el){el.dataset.enAlt=el.getAttribute('alt')||'';});
+
+  var toggle=document.getElementById('lang-toggle');
+  function apply(lang){
+    current=lang;var fa=lang==='fa';
+    root.lang=fa?'fa':'en';root.dir=fa?'rtl':'ltr';
+    document.title=fa?FA.title:EN.title;
+    each('[data-i18n]',function(el){var k=el.dataset.i18n;el.innerHTML=fa&&FA[k]?FA[k]:el.dataset.en;});
+    each('[data-i18n-aria]',function(el){var k=el.dataset.i18nAria;el.setAttribute('aria-label',fa&&FA[k]?FA[k]:el.dataset.enAria);});
+    each('[data-i18n-alt]',function(el){var k=el.dataset.i18nAlt;el.setAttribute('alt',fa&&FA[k]?FA[k]:el.dataset.enAlt);});
+    toggle.textContent=fa?'EN':'فا';
+    toggle.lang=fa?'en':'fa';
+    toggle.setAttribute('aria-label',fa?'View in English (نمایش به انگلیسی)':'نمایش به فارسی (View in Persian)');
+    each('[data-set-lang]',function(b){b.setAttribute('aria-pressed',b.dataset.setLang===lang?'true':'false');});
+    try{localStorage.setItem('smj-lang',lang);}catch(e){}
+  }
+  toggle.addEventListener('click',function(){apply(current==='fa'?'en':'fa');});
+  each('[data-set-lang]',function(b){b.addEventListener('click',function(){apply(b.dataset.setLang);});});
+  var saved=null;try{saved=localStorage.getItem('smj-lang');}catch(e){}
+  if(saved==='fa')apply('fa');
+
+  var menu=document.getElementById('menu'),openBtn=document.getElementById('menu-open'),
+      searchBtn=document.getElementById('search-open'),closeBtn=document.getElementById('menu-close');
+  function isOpen(){return menu.classList.contains('open');}
+  function open(){menu.inert=false;menu.classList.add('open');openBtn.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';setTimeout(function(){closeBtn.focus({preventScroll:true});},60);}
+  function shut(){menu.classList.remove('open');menu.inert=true;openBtn.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  openBtn.addEventListener('click',open);
+  searchBtn.addEventListener('click',open);
+  closeBtn.addEventListener('click',function(){shut();openBtn.focus();});
+  menu.addEventListener('click',function(e){if(e.target.closest('nav a'))shut();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&isOpen()){shut();openBtn.focus();}});
+})();
+</script>
+
+</body>
+</html>
