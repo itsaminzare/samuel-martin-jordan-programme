@@ -184,14 +184,13 @@ main,footer{margin-left:calc(var(--rail) + env(safe-area-inset-left,0px))}
 @media (max-width:800px){.steps{grid-template-columns:minmax(0,1fr)}.step,.step + .step{padding:24px 0;border-left:0;border-bottom:1px solid var(--rule)}}
 
 /* People */
-.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;margin-top:48px}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(32px,5vw,64px);margin-top:48px;max-width:980px}
 .card-p{border-top:3px solid var(--navy);padding-top:22px}
 .card-p.empty{border-top-color:var(--rule)}
 .card-p h3{font-size:1.7rem}
 .card-p .role{margin-top:6px;font-size:.8rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--navy)}
 :root[lang="fa"] .card-p .role{font-size:.95rem}
 .card-p p.bio{margin-top:10px;color:var(--muted)}
-@media (max-width:900px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.cards{grid-template-columns:minmax(0,1fr)}}
 
 /* Support */
@@ -203,6 +202,14 @@ main,footer{margin-left:calc(var(--rail) + env(safe-area-inset-left,0px))}
 .way + .way{padding-left:24px;border-left:1px solid var(--navy-line)}
 .way h3{font-size:1.6rem}
 .way p{margin-top:8px;color:var(--on-navy-muted)}
+.contact{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:10px}
+.contact li{display:grid;grid-template-columns:4.5em minmax(0,1fr);gap:12px;align-items:baseline}
+.contact .cl{font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--on-navy-muted)}
+:root[lang="fa"] .contact .cl{font-size:.9rem}
+.contact a{color:var(--on-navy);text-decoration:none;border-bottom:1px solid var(--navy-line);overflow-wrap:anywhere;font-variant-numeric:tabular-nums;font-family:"Figtree","Helvetica Neue",Arial,sans-serif;justify-self:start}
+:root[dir="rtl"] .contact a{justify-self:end}
+.contact a:hover{border-color:var(--gold)}
+.foot .contact-list a{overflow-wrap:anywhere;font-family:"Figtree","Helvetica Neue",Arial,sans-serif}
 @media (max-width:800px){.ways{grid-template-columns:minmax(0,1fr)}.way,.way + .way{padding:22px 0;border-left:0;border-bottom:1px solid var(--navy-line)}}
 
 /* Footer */
@@ -417,15 +424,10 @@ footer{background:var(--navy-deep);color:var(--on-navy-muted);font-size:.92rem}
         <p class="role" data-i18n="role1">Co-Founder &amp; Treasurer</p>
         <p class="bio" data-i18n="bio1">Managed the Programme's budget, estimated its funding needs and prepared its donor reports. Now reading Anthropology at University College London.</p>
       </article>
-      <article class="card-p empty">
-        <h3 data-i18n="cof">Co-Founder</h3>
-        <p class="role" data-i18n="tba">Name and role to be added</p>
-        <p class="bio" data-i18n="bioTba">A short biography will appear here.</p>
-      </article>
-      <article class="card-p empty">
-        <h3 data-i18n="cof">Co-Founder</h3>
-        <p class="role" data-i18n="tba">Name and role to be added</p>
-        <p class="bio" data-i18n="bioTba">A short biography will appear here.</p>
+      <article class="card-p">
+        <h3 data-i18n="name2">Mehdi Alhashemi</h3>
+        <p class="role" data-i18n="cof">Co-Founder</p>
+        <p class="bio" data-i18n="bio2">Principal of Mehraein Non-Profit School in Tehran.</p>
       </article>
     </div>
   </section>
@@ -435,9 +437,18 @@ footer{background:var(--navy-deep);color:var(--on-navy-muted);font-size:.92rem}
     <h2 id="support-title" data-i18n="hSup">Open a door for the next cohort</h2>
     <div class="prose"><p data-i18n="pSup">Every place on the Programme is funded by people who believe that ability, not circumstance, should decide a student's future. Your gift is budgeted with care and reported back to you.</p></div>
     <div class="ways" id="contact">
-      <div class="way"><h3 data-i18n="wy1">Make a gift</h3><p data-i18n="wy1p">Donation details coming soon.</p></div>
-      <div class="way"><h3 data-i18n="wy2">Partner with us</h3><p data-i18n="wy2p">For schools, teachers and organisations. Details coming soon.</p></div>
-      <div class="way"><h3 data-i18n="wy3">Get in touch</h3><p data-i18n="wy3p">Contact details coming soon.</p></div>
+      <div class="way"><h3 data-i18n="wy1">Make a gift</h3><p data-i18n="wy1p">To make a donation, please get in touch by phone or email.</p></div>
+      <div class="way"><h3 data-i18n="wy2">Partner with us</h3><p data-i18n="wy2p">For schools, teachers and organisations. Get in touch to talk about working together.</p></div>
+      <div class="way">
+        <h3 data-i18n="wy3">Get in touch</h3>
+        <p data-i18n="wy3p">Mohammadamin Zare, Co-Founder &amp; Treasurer</p>
+        <ul class="contact">
+          <li><span class="cl" data-i18n="cIran">Iran</span><a href="tel:+989912047158" dir="ltr">+98 991 204 7158</a></li>
+          <li><span class="cl" data-i18n="cUK">UK</span><a href="tel:+447717529890" dir="ltr">+44 7717 529890</a></li>
+          <li><span class="cl" data-i18n="cEmail">Email</span><a href="mailto:mohammadamin.zare.25@ucl.ac.uk" dir="ltr">mohammadamin.zare.25@ucl.ac.uk</a></li>
+          <li><span class="cl" data-i18n="cEmail">Email</span><a href="mailto:itsaminzare@gmail.com" dir="ltr">itsaminzare@gmail.com</a></li>
+        </ul>
+      </div>
     </div>
   </section>
 </main>
@@ -456,7 +467,7 @@ footer{background:var(--navy-deep);color:var(--on-navy-muted);font-size:.92rem}
     </div>
     <div><h4 data-i18n="fProg">Programme</h4><ul><li><a href="#about" data-i18n="fAbout">About</a></li><li><a href="#programme" data-i18n="nHow">How it works</a></li><li><a href="#story" data-i18n="nStory">Our story</a></li></ul></div>
     <div><h4 data-i18n="fCom">Community</h4><ul><li><a href="#people" data-i18n="nPeople">People</a></li><li><a href="#support" data-i18n="nSupport">Support us</a></li></ul></div>
-    <div><h4 data-i18n="fCon">Contact</h4><ul><li data-i18n="fCity">Tehran, Iran</li><li data-i18n="fSoon">Details coming soon</li></ul></div>
+    <div><h4 data-i18n="fCon">Contact</h4><ul class="contact-list"><li data-i18n="fCity">Tehran, Iran</li><li><a href="tel:+989912047158" dir="ltr">+98 991 204 7158</a></li><li><a href="tel:+447717529890" dir="ltr">+44 7717 529890</a></li><li><a href="mailto:mohammadamin.zare.25@ucl.ac.uk" dir="ltr">mohammadamin.zare.25@ucl.ac.uk</a></li><li><a href="mailto:itsaminzare@gmail.com" dir="ltr">itsaminzare@gmail.com</a></li></ul></div>
   </div>
   <div class="legal"><span data-i18n="copy">© 2026 Samuel Martin Jordan Programme</span><span data-i18n="np">Non-profit · Tehran, Iran</span></div>
 </footer>
@@ -506,9 +517,11 @@ footer{background:var(--navy-deep);color:var(--on-navy-muted);font-size:.92rem}
     cof:"هم‌بنیان‌گذار",tba:"نام و سمت به‌زودی اضافه می‌شود",bioTba:"معرفی کوتاه به‌زودی در اینجا قرار می‌گیرد.",
     kSup:"حمایت از برنامه",hSup:"دری به روی ورودی بعدی بگشایید",
     pSup:"هزینهٔ تحصیل هر دانش‌آموز در این برنامه را کسانی تأمین می‌کنند که باور دارند آیندهٔ یک دانش‌آموز را باید توانایی او رقم بزند، نه شرایط زندگی‌اش. کمک شما با دقت بودجه‌بندی می‌شود و گزارش آن به دستتان می‌رسد.",
-    wy1:"کمک مالی",wy1p:"راه‌های پرداخت کمک به‌زودی اعلام می‌شود.",
-    wy2:"همکاری با ما",wy2p:"ویژهٔ مدارس، معلمان و سازمان‌ها. جزئیات به‌زودی اعلام می‌شود.",
-    wy3:"تماس با ما",wy3p:"اطلاعات تماس به‌زودی اعلام می‌شود.",
+    wy1:"کمک مالی",wy1p:"برای کمک مالی، لطفاً از طریق تلفن یا ایمیل با ما در تماس باشید.",
+    wy2:"همکاری با ما",wy2p:"ویژهٔ مدارس، معلمان و سازمان‌ها. برای گفت‌وگو دربارهٔ همکاری با ما تماس بگیرید.",
+    wy3:"تماس با ما",wy3p:"محمدامین زارع، هم‌بنیان‌گذار و خزانه‌دار",
+    cIran:"ایران",cUK:"بریتانیا",cEmail:"ایمیل",
+    name2:"مهدی آل‌هاشمی",bio2:"مدیر مدرسهٔ غیرانتفاعی مهرآیین در تهران.",
     fName:"برنامهٔ ساموئل مارتین جردن",blazon:"نشان: سپری با شش نوار افقی زرد و آبی",
     fProg:"برنامه",fAbout:"دربارهٔ ما",fCom:"مشارکت",fCon:"تماس",fCity:"تهران، ایران",fSoon:"به‌زودی",
     copy:"© ۲۰۲۶ برنامهٔ ساموئل مارتین جردن",np:"غیرانتفاعی · تهران، ایران"
